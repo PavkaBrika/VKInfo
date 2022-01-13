@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="460dp"
         android:baselineAlignBottom="true"
-        android:src="@drawable/VKlogo" />
+        android:src="@drawable/vklogo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,27 +22,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/edttxt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="8dp"
                 android:hint="@string/edittexthint"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <Button
+                android:id="@+id/btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/searchbtn"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/btn"/>
+                android:backgroundTint="@color/btn"
+                android:onClick="showRes"/>
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/res"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/result"
