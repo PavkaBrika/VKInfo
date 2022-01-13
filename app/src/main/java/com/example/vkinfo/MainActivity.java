@@ -24,17 +24,18 @@ public class MainActivity extends AppCompatActivity {
         TextView result = (TextView) findViewById(R.id.res);
         String name = searchField.getText().toString();
         if (name.length() == 0) {
-            makeToast("Введите имя пользователя");
+            makeToast(getString(R.string.usrsID));
         }
         else {
-            makeToast("Поиск");
             if (name.matches("[0-9]+")) {
+                makeToast(getString(R.string.search));
                 result.setText(makeLinkID(name));
             }
             else if (name.contains(" ") == true) {
-                makeToast("Введите правильный");
+                makeToast(getString(R.string.error));
             }
             else {
+                makeToast(getString(R.string.search));
                 result.setText(makeLinkUserName(name));
             }
         }

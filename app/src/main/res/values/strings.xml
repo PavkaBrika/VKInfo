@@ -3,4 +3,7 @@
     <string name="searchbtn">Search</string>
     <string name="edittexthint">Enter ID VK user</string>
     <string name="result">The result will be displayed here</string>
+    <string name="usrsID">Enter Users ID or Nickname</string>
+    <string name="search">Search...</string>
+    <string name="error">Enter right users ID or Nickname</string>
 </resources>
