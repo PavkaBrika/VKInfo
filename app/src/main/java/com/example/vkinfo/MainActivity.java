@@ -9,6 +9,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Scanner;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void showRes(View view) {
+    public void showRes(View view) throws IOException {
         EditText searchField = (EditText) findViewById(R.id.edttxt);
         TextView result = (TextView) findViewById(R.id.res);
         String name = searchField.getText().toString();
@@ -46,9 +53,28 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
     }
 
-    public String makeLinkID(String id) {
+    public String makeLinkID(String id) throws IOException {
         String link = "https://api.vk.com/method/users.get?user_id=" + id + "&v=5.131&access_token=efdf7579efdf7579efdf7579c9efa5a086eefdfefdf75798e3fe8c23e6c0c22111a1d56";
-        return link;
+        URL myURL = new URL(link);
+        HttpURLConnection urlConnection = (HttpURLConnection) myURL.openConnection();
+
+
+        try {
+            InputStream inputStream = urlConnection.getInputStream();
+
+            Scanner scanner = new Scanner(inputStream);
+            scanner.useDelimiter("\\A");
+
+            boolean hasInput = scanner.hasNext();
+
+            if (hasInput) {
+                return scanner.next();
+            } else {
+                return null;
+            }
+        } finally {
+            urlConnection.disconnect();
+        }
     }
 
     public String makeLinkUserName(String id) {
